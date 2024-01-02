@@ -1,11 +1,30 @@
-$primary: #2f445f;
-$secondary: #2e151b;
-$lightSecondary: #da7b93;
-$light: #376e6f;
-$accent: #1c3334;
-$dark: #1a1a1a;
+@import "_variables";
 
 body  {
-  background-color: $secondary;
-  color: $lightSecondary;
+  background-color: $light;
+  color: $dark;
+  position: relative;
+}
+
+.grudge-button {
+  background-color: $dark;
+  color: $light;
+  border: none;
+  &:hover {
+    cursor: pointer;
+  }
+  &[disabled] {
+    background-color: $disabled;
+  }
+}
+
+.grudge-textarea {
+  outline: none;
+  color: $light;
+}
+
+.grudge-icon {
+  &:hover {
+    cursor: pointer;
+  }
 }

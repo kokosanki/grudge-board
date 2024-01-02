@@ -1,0 +1,50 @@
+@import "@/_variables";
+
+.point-modal {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  &__container {
+    width: 500px;
+    background-color: $accent;
+    color: $dark;
+    padding: 16px;
+  }
+  &__header {
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__close-button {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__textarea-container {
+    position: relative;
+  }
+  &__textarea {
+    width: 100%;
+  }
+  &__error {
+    position: absolute;
+    bottom: -30px;
+    font-size: 14px;
+    color: $danger;
+  }
+  &__footer {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__button {
+    padding: 4px 8px;
+    border-radius: 8px;
+  }
+}
