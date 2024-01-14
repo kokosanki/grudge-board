@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import type { RootState } from "@/app/store";
 
 export interface ModalData {
@@ -18,7 +18,6 @@ export enum ModalType {
   HATE = "hate",
 }
 
-// Define the initial state using that type
 const initialState: PointModalState = {
   isModalActive: false,
   modalData: {
@@ -30,7 +29,6 @@ const initialState: PointModalState = {
 
 export const pointModalSlice = createSlice({
   name: "pointModal",
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
     activateModal: (state) => {

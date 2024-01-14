@@ -1,26 +1,20 @@
 import "./styles.scss";
 import { UserType } from "@/components/Board/types";
 import {
-  selectIsPointModalActive,
   activateModal,
-  deactiveModal,
   setModalData,
   ModalType,
 } from "@/components/PointModal/PointModalSlice";
-import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { useAppDispatch } from "../../app/hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFaceGrinHearts,
   faFaceTired,
 } from "@fortawesome/free-solid-svg-icons";
 function User({ email, id }: UserType) {
-  const handleClick = () => {
-    console.log(id);
-  };
   const dispatch = useAppDispatch();
 
   const giveLovePoints = () => {
-    console.log("Love Points", id);
     dispatch(activateModal());
     const modalData = {
       modalType: ModalType.LOVE,
@@ -31,7 +25,6 @@ function User({ email, id }: UserType) {
   };
 
   const giveHatePoints = () => {
-    console.log("Hate Points", id);
     dispatch(activateModal());
     const modalData = {
       modalType: ModalType.HATE,
