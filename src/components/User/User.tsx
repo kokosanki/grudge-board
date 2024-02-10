@@ -11,6 +11,7 @@ import {
   faFaceGrinHearts,
   faFaceTired,
 } from "@fortawesome/free-solid-svg-icons";
+
 function User({ email, id }: UserType) {
   const dispatch = useAppDispatch();
 

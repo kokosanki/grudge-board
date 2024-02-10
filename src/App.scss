@@ -1,9 +1,16 @@
 @import "_variables";
 
-body  {
+body {
+  position: relative;
+}
+
+.app-wrapper {
   background-color: $light;
   color: $dark;
-  position: relative;
+  min-width: 100vw;
+  height: 100vh;
+  padding: 40px 20px;
+  overflow: scroll;
 }
 
 .grudge-button {
