@@ -3,9 +3,10 @@ export interface UserType {
   email: string;
 }
 
-export interface Point {
+export interface PointType {
   id: string;
   name: string;
+  text: string;
   created_at: string;
   created_by: string;
   user_id: string;

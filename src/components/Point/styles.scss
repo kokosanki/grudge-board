@@ -1,0 +1,33 @@
+.point {
+  width: 200px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  &--love {
+    background-color: rgb(165, 232, 184);
+  }
+  &--hate {
+    background-color: rgb(225, 121, 121);
+  }
+
+  &__text,
+  &__title {
+    margin: 0;
+    padding: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+  }
+
+  &__title {
+    font-size: 16px;
+    line-height: normal;
+    margin-bottom: 8px;
+    -webkit-line-clamp: 2;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: normal;
+    -webkit-line-clamp: 3;
+  }
+}

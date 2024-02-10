@@ -1,23 +1,27 @@
 import { supabase } from "@/supabase";
 import { useEffect, useState } from "react";
-import { UserType, Point } from "@/components/Board/types";
+import { UserType, PointType } from "@/components/Board/types";
 import User from "@/components/User/User";
 import "./styles.scss";
 import PointModal from "@/components/PointModal/PointModal";
+import Points from "@/components/Points/Points";
 import { selectIsPointModalActive } from "@/components/PointModal/PointModalSlice";
 
 import { useAppSelector } from "../../app/hooks";
 
 function Board() {
   const [users, setUsers] = useState<UserType[] | null>(null);
-  const [lovePoints, setLovePoints] = useState<Point[] | null>(null);
-  const [hatePoints, setHatePoints] = useState<Point[] | null>(null);
+  const [lovePoints, setLovePoints] = useState<PointType[] | null>(null);
+  const [hatePoints, setHatePoints] = useState<PointType[] | null>(null);
 
   const isModalActive: boolean = useAppSelector(selectIsPointModalActive);
 
   async function getUsers() {
     try {
-      const { data } = await supabase.from("users").select().returns<User[]>();
+      const { data } = await supabase
+        .from("users")
+        .select()
+        .returns<UserType[]>();
       setUsers(data);
     } catch (err) {
       console.error(err);
@@ -29,7 +33,7 @@ function Board() {
       const { data } = await supabase
         .from("love_points")
         .select()
-        .returns<Point[]>();
+        .returns<PointType[]>();
       setLovePoints(data);
     } catch (err) {
       console.error(err);
@@ -41,12 +45,20 @@ function Board() {
       const { data } = await supabase
         .from("hate_points")
         .select()
-        .returns<Point[]>();
+        .returns<PointType[]>();
       setHatePoints(data);
     } catch (err) {
       console.error(err);
     }
   }
+
+  const filterUserLovePoints = (userId: string): PointType[] => {
+    return lovePoints?.filter((point) => point.user_id === userId) || [];
+  };
+
+  const filterUserHatePoints = (userId: string): PointType[] => {
+    return hatePoints?.filter((point) => point.user_id === userId) || [];
+  };
 
   useEffect(() => {
     getUsers();
@@ -58,15 +70,13 @@ function Board() {
     <div className="board">
       {isModalActive && <PointModal />}
       {users?.map((user) => (
-        <User {...user} key={user.id} />
-      ))}
-      <h2>Love:</h2>
-      {lovePoints?.map((point) => (
-        <div key={point.id}>{point.name}</div>
-      ))}
-      <h2>Hate:</h2>
-      {hatePoints?.map((point) => (
-        <div key={point.id}>{point.name}</div>
+        <div className="board__item" key={user.id}>
+          <User {...user} />
+          <Points
+            lovePoints={filterUserLovePoints(user.id)}
+            hatePoints={filterUserHatePoints(user.id)}
+          />
+        </div>
       ))}
     </div>
   );
