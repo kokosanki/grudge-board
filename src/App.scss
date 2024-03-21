@@ -4,6 +4,14 @@ body {
   position: relative;
 }
 
+p,
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
 .app-wrapper {
   background-color: $light;
   color: $dark;
@@ -11,6 +19,9 @@ body {
   height: 100vh;
   padding: 40px 20px;
   overflow: scroll;
+  &__header {
+    margin-bottom: 25px;
+  }
 }
 
 .grudge-button {

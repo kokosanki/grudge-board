@@ -16,8 +16,8 @@ function Home() {
   }, []);
   return (
     <div className="app-wrapper">
-      <h1>Grudge Board</h1>
-      <div className="card">
+      <h1 className="app-wrapper__header">Grudge Board</h1>
+      <div className="app-wrapper__card">
         <Board />
       </div>
     </div>

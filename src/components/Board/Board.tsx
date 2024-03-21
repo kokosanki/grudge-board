@@ -6,15 +6,16 @@ import "./styles.scss";
 import PointModal from "@/components/PointModal/PointModal";
 import Points from "@/components/Points/Points";
 import { selectIsPointModalActive } from "@/components/PointModal/PointModalSlice";
+import { setBoardUsers, selectBoardUsers } from "@/components/Board/BoardSlice";
 
-import { useAppSelector } from "../../app/hooks";
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
 
 function Board() {
-  const [users, setUsers] = useState<UserType[] | null>(null);
+  const dispatch = useAppDispatch();
   const [lovePoints, setLovePoints] = useState<PointType[] | null>(null);
   const [hatePoints, setHatePoints] = useState<PointType[] | null>(null);
-
   const isModalActive: boolean = useAppSelector(selectIsPointModalActive);
+  const users: UserType[] = useAppSelector(selectBoardUsers);
 
   async function getUsers() {
     try {
@@ -22,7 +23,7 @@ function Board() {
         .from("users")
         .select()
         .returns<UserType[]>();
-      setUsers(data);
+      dispatch(setBoardUsers(data));
     } catch (err) {
       console.error(err);
     }

@@ -2,6 +2,9 @@
   width: 200px;
   padding: 10px 20px;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   &--love {
     background-color: rgb(165, 232, 184);
   }
@@ -14,7 +17,7 @@
     margin: 0;
     padding: 0;
     display: -webkit-box;
-    -webkit-box-orient: vertical;  
+    -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
@@ -29,5 +32,10 @@
     font-size: 14px;
     line-height: normal;
     -webkit-line-clamp: 3;
+  }
+
+  &__created-by {
+    margin-top: 10px;
+    font-size: 12px;
   }
 }
