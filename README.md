@@ -26,3 +26,12 @@ If you are developing a production application, we recommend updating the config
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 # grudge-board
+
+## TODO
+1. Delete a point
+2. Archive a point
+3. Refresh app state after action
+4. Make app responsive
+5. Open point in a pop-up window
+6. Search points
+7. Improve app design
